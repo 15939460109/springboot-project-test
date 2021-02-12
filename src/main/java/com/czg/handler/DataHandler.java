@@ -1,10 +1,9 @@
 package com.czg.handler;
 
 import com.czg.bean.DataBean;
+import com.czg.util.HttpURLConnectionUtil;
 import com.google.gson.Gson;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,38 +11,47 @@ import java.util.Map;
 
 public class DataHandler {
 
-    private static String testStr = "{\"name\":\"独钓寒江雪\"}";
+//    private static String testStr = "{\"name\":\"独钓寒江雪\"}";
+
+    public static String urlStr = "https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5";
 
     public static void main(String[] args) throws IOException {
 //        Gson gson = new Gson();
 //        Map result = gson.fromJson(testStr, Map.class);
 //        System.out.println(result);
 
-        List<DataBean> result = readData();
+        List<DataBean> result = getData();
         System.out.println(result);
     }
 
-    public static List<DataBean> readData() throws IOException {
-        // 文件输入流
-        File file = new File("temp.txt");
-        FileReader fr = new FileReader(file);
-        // 缓存数组
-        char[] cBuf = new char[1024];
-        // 每次读取长度
-        int cRead = 0;
-        // 每次读取后拼接到字符串后面
-        StringBuilder builder = new StringBuilder();
-        while ((cRead = fr.read(cBuf)) > 0) {
-            builder.append(new String(cBuf, 0, cRead));
-        }
-        // 关闭流
-        fr.close();
+    public static List<DataBean> getData() throws IOException {
+//        // 文件输入流
+//        File file = new File("temp.txt");
+//        FileReader fr = new FileReader(file);
+//        // 缓存数组
+//        char[] cBuf = new char[1024];
+//        // 每次读取长度
+//        int cRead = 0;
+//        // 每次读取后拼接到字符串后面
+//        StringBuilder builder = new StringBuilder();
+//        while ((cRead = fr.read(cBuf)) > 0) {
+//            builder.append(new String(cBuf, 0, cRead));
+//        }
+//        // 关闭流
+//        fr.close();
 
 //        System.out.println(builder.toString());
 
+        // 实时获取数据
+        String respJson = HttpURLConnectionUtil.doGet(urlStr);
+
         Gson gson = new Gson();
         // 将json数据包装成map
-        Map map = gson.fromJson(builder.toString(), Map.class);
+//        Map map = gson.fromJson(builder.toString(), Map.class);
+        Map originalMap = gson.fromJson(respJson, Map.class);
+        String data = (String)originalMap.get("data");
+
+        Map map = gson.fromJson(data, Map.class);
 
         ArrayList areaList = (ArrayList)map.get("areaTree");
         Map dataMap = (Map)areaList.get(0);

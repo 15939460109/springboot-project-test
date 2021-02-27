@@ -100,7 +100,13 @@ public class DataHandler {
             double heal = (Double)totalMap.get("heal");
             double dead = (Double)totalMap.get("dead");
 
-            DataBean bean = new DataBean(name, (int)nowConfirm, (int)confirm, (int)heal, (int)dead);
+            DataBean bean = new DataBean();
+            bean.setArea(name);
+            bean.setNowConfirm((int)nowConfirm);
+            bean.setConfirm((int)confirm);
+            bean.setDead((int)dead);
+            bean.setHeal((int)heal);
+
             result.add(bean);
         }
         return result;

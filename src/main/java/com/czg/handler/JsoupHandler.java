@@ -58,7 +58,13 @@ public class JsoupHandler {
                 double heal = (Double)map.get("curedCount");
                 double dead = (Double)map.get("deadCount");
 
-                DataBean bean = new DataBean(area, (int)nowConfirm, (int)confirm, (int)heal, (int)dead);
+                DataBean bean = new DataBean();
+                bean.setArea(area);
+                bean.setNowConfirm((int)nowConfirm);
+                bean.setConfirm((int)confirm);
+                bean.setDead((int)dead);
+                bean.setHeal((int)heal);
+
                 result.add(bean);
             }
         } catch (IOException e) {

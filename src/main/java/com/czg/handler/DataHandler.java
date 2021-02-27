@@ -37,7 +37,6 @@ public class DataHandler {
     public void saveData() {
         try {
             List<DataBean> data = getData();
-
             // 清空表格数据
             dataService.remove(null);
             // 更新数据

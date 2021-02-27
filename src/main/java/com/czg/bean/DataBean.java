@@ -1,11 +1,20 @@
 package com.czg.bean;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 
 @Data @AllArgsConstructor
-public class DataBean {
+@NoArgsConstructor
+@TableName("illness")
+public class DataBean implements Serializable {
 
+//    @TableId
+//    private int id;
     private String area;
     private int nowConfirm;
     private int confirm;

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -22,4 +23,10 @@ public class DataController {
         return "list";
     }
 
+//    @GetMapping("/list/{id}")
+//    public String list(Model model, @PathVariable String id) {
+//        List<DataBean> list = dataService.listById(Integer.parseInt(id));
+//        model.addAttribute("dataList", list);
+//        return "list";
+//    }
 }

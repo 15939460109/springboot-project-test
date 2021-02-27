@@ -1,16 +1,24 @@
 package com.czg.handler;
 
 import com.czg.bean.DataBean;
+import com.czg.service.DataService;
 import com.czg.util.HttpURLConnectionUtil;
 import com.google.gson.Gson;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class DataHandler {
 
+    @Autowired
+    private DataService dataService;
 //    private static String testStr = "{\"name\":\"独钓寒江雪\"}";
 
     public static String urlStr = "https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5";
@@ -22,6 +30,29 @@ public class DataHandler {
 
         List<DataBean> result = getData();
         System.out.println(result);
+    }
+
+    // 服务器启动时更新数据到数据库
+    @PostConstruct
+    public void saveData() {
+        try {
+            List<DataBean> data = getData();
+
+            // 清空表格数据
+            dataService.remove(null);
+            // 更新数据
+            dataService.saveBatch(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 配置定时执行的注解  支持cron表达式
+    // 每分钟执行一次  更改可参考cron表达式生成网站
+    @Scheduled(cron = "0 0/1 * * * ? ")
+    public void updateData() {
+        System.out.println("更新数据");
+        saveData();
     }
 
     public static List<DataBean> getData() throws IOException {

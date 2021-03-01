@@ -56,7 +56,7 @@ public class DataHandler {
 
     public static List<DataBean> getData() throws IOException {
 //        // 文件输入流
-//        File file = new File("temp.txt");
+//        File file = new File("temp1_1.txt");
 //        FileReader fr = new FileReader(file);
 //        // 缓存数组
 //        char[] cBuf = new char[1024];

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="echarts/echarts.min.js"></script>
+</head>
+<body>
+    <div id="main" style="width: 600px; height:400px;"></div>
+
+    <script type="text/javascript" th:inline="javascript">
+        var myChart = echarts.init(document.getElementById('main'));
+
+        var date = [[${dateList}]];
+        var nowConfirm = [[${nowConfirmList}]];
+
+        var option = {
+            title: {    // 标题
+                text: '全国现有确诊趋势'
+            },
+            tooltip: {  // 鼠标时间 提示框
+                trigger: 'axis'
+            },
+            legend: {   // 曲线含义说明
+                data: ['现有确诊']
+            },
+            xAxis: {
+                data: JSON.parse(date)
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                name: '现有确诊',
+                data: JSON.parse(nowConfirm),
+                type: 'line'
+            }]
+        };
+
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

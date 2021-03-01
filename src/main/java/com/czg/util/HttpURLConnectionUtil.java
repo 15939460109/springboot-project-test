@@ -11,12 +11,6 @@ import java.net.URL;
 // java原生的使用方式
 public class HttpURLConnectionUtil {
 
-    public static void main(String[] args) {
-        String str = "https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5";
-        String result = doGet(str);
-        System.out.println(result);
-    }
-
     public static String doGet(String urlStr) {
         HttpURLConnection conn = null;
         InputStream is = null;
@@ -70,5 +64,11 @@ public class HttpURLConnectionUtil {
         }
 
         return builder.toString();
+    }
+
+    public static void main(String[] args) {
+        String str = "https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5";
+        String result = doGet(str);
+        System.out.println(result);
     }
 }

@@ -50,7 +50,6 @@ public class DataHandler {
     // 每分钟执行一次  更改可参考cron表达式生成网站
     @Scheduled(cron = "0 0/1 * * * ? ")
     public void updateData() {
-        System.out.println("更新数据");
         saveData();
     }
 

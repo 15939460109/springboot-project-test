@@ -1,0 +1,198 @@
+{
+  "asymptomaticProvince": {
+    "confirm": [
+      {
+        "province": "广东",
+        "increase": 4,
+        "confirm": 101
+      },
+      {
+        "province": "浙江",
+        "increase": 0,
+        "confirm": 43
+      },
+      {
+        "province": "四川",
+        "increase": 1,
+        "confirm": 22
+      },
+      {
+        "province": "福建",
+        "increase": 0,
+        "confirm": 16
+      },
+      {
+        "province": "北京",
+        "increase": 0,
+        "confirm": 14
+      },
+      {
+        "province": "陕西",
+        "increase": 0,
+        "confirm": 12
+      },
+      {
+        "increase": 1,
+        "confirm": 10,
+        "province": "天津"
+      },
+      {
+        "increase": 0,
+        "confirm": 9,
+        "province": "河南"
+      },
+      {
+        "increase": 0,
+        "confirm": 5,
+        "province": "山西"
+      },
+      {
+        "increase": 0,
+        "confirm": 5,
+        "province": "湖南"
+      },
+      {
+        "province": "山东",
+        "increase": 0,
+        "confirm": 3
+      },
+      {
+        "province": "云南",
+        "increase": 0,
+        "confirm": 3
+      },
+      {
+        "province": "河北",
+        "increase": 0,
+        "confirm": 3
+      },
+      {
+        "confirm": 3,
+        "province": "江苏",
+        "increase": 0
+      },
+      {
+        "province": "湖北",
+        "increase": 0,
+        "confirm": 2
+      },
+      {
+        "province": "黑龙江",
+        "increase": 0,
+        "confirm": 2
+      },
+      {
+        "province": "重庆",
+        "increase": 0,
+        "confirm": 2
+      },
+      {
+        "province": "辽宁",
+        "increase": 0,
+        "confirm": 1
+      },
+      {
+        "confirm": 1,
+        "province": "广西",
+        "increase": 0
+      }
+    ],
+    "increase": [
+      {
+        "increase": 4,
+        "confirm": 101,
+        "province": "广东"
+      },
+      {
+        "province": "四川",
+        "increase": 1,
+        "confirm": 22
+      },
+      {
+        "province": "天津",
+        "increase": 1,
+        "confirm": 10
+      },
+      {
+        "increase": 0,
+        "confirm": 3,
+        "province": "山东"
+      },
+      {
+        "confirm": 16,
+        "province": "福建",
+        "increase": 0
+      },
+      {
+        "province": "山西",
+        "increase": 0,
+        "confirm": 5
+      },
+      {
+        "increase": 0,
+        "confirm": 43,
+        "province": "浙江"
+      },
+      {
+        "increase": 0,
+        "confirm": 1,
+        "province": "辽宁"
+      },
+      {
+        "province": "陕西",
+        "increase": 0,
+        "confirm": 12
+      },
+      {
+        "province": "江苏",
+        "increase": 0,
+        "confirm": 3
+      },
+      {
+        "province": "云南",
+        "increase": 0,
+        "confirm": 3
+      },
+      {
+        "province": "黑龙江",
+        "increase": 0,
+        "confirm": 2
+      },
+      {
+        "province": "河北",
+        "increase": 0,
+        "confirm": 3
+      },
+      {
+        "province": "湖北",
+        "increase": 0,
+        "confirm": 2
+      },
+      {
+        "province": "河南",
+        "increase": 0,
+        "confirm": 9
+      },
+      {
+        "province": "湖南",
+        "increase": 0,
+        "confirm": 5
+      },
+      {
+        "increase": 0,
+        "confirm": 14,
+        "province": "北京"
+      },
+      {
+        "confirm": 2,
+        "province": "重庆",
+        "increase": 0
+      },
+      {
+        "province": "广西",
+        "increase": 0,
+        "confirm": 1
+      }
+    ]
+  }
+}

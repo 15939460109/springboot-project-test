@@ -70,7 +70,6 @@ public class MailHandler {
 
         // 设置文本 且html标志为true
         helper.setText(result, true);
-
         helper.setFrom("2357367330@qq.com");
         helper.setTo("15939460109@163.com");
 

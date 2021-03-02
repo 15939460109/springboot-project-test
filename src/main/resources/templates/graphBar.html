@@ -12,13 +12,13 @@
     var myChart = echarts.init(document.getElementById('main'));
 
     var privince = [[${provinceList}]];
-    var increase = [[${increaseList}]];
+    var confirm = [[${confirmList}]];
 
     var option = {
         title: {    // 标题
-            text: '新增无症状感染者'
+            text: '现有无症状感染者'
         },
-        tooltip: {  // 鼠标时间 提示框
+        tooltip: {  // 鼠标事件 提示框
             trigger: 'axis'
         },
         xAxis: {
@@ -28,7 +28,7 @@
             type: 'value'
         },
         series: [{
-            data: JSON.parse(increase),
+            data: JSON.parse(confirm),
             type: 'bar',
             showBackground: true,
             backgroundStyle: {

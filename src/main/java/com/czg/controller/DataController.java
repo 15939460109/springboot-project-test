@@ -4,7 +4,6 @@ import com.czg.bean.*;
 import com.czg.handler.GraphHandler;
 import com.czg.service.DataService;
 import com.google.gson.Gson;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -76,14 +75,14 @@ public class DataController {
         return "graphAdd";
     }
 
-    @GetMapping("/asymptomatic")
+    @GetMapping("/graphBar")
     public String asymptomatic(Model model) {
-        List<AsymptomaticBean> list = GraphHandler.asymptomaticData();
+        List<GraphBarBean> list = GraphHandler.asymptomaticData();
         // 需要排名前十的数据
         List<String> provinceList = new ArrayList<>();
         List<Integer> confirmList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            AsymptomaticBean bean = list.get(i);
+            GraphBarBean bean = list.get(i);
              if (bean.getConfirm() > 0) {
                  provinceList.add(bean.getProvince());
                  confirmList.add(bean.getConfirm());
@@ -93,17 +92,17 @@ public class DataController {
         Gson gson = new Gson();
         model.addAttribute("provinceList", gson.toJson(provinceList));
         model.addAttribute("confirmList", gson.toJson(confirmList));
-        return "asymptomatic";
+        return "graphBar";
     }
 
-    @GetMapping("/asymptomaticAdd")
+    @GetMapping("/graphBarAdd")
     public String asymptomaticAdd(Model model) {
-        List<AsymptomaticBean> list = GraphHandler.asymptomaticAddData();
+        List<GraphBarBean> list = GraphHandler.asymptomaticAddData();
         // 需要排名前十的数据
         List<String> provinceList = new ArrayList<>();
         List<Integer> increaseList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            AsymptomaticBean bean = list.get(i);
+            GraphBarBean bean = list.get(i);
             if (bean.getIncrease() > 0) {
                 provinceList.add(bean.getProvince());
                 increaseList.add(bean.getIncrease());
@@ -113,7 +112,7 @@ public class DataController {
         Gson gson = new Gson();
         model.addAttribute("provinceList", gson.toJson(provinceList));
         model.addAttribute("increaseList", gson.toJson(increaseList));
-        return "asymptomaticAdd";
+        return "graphBarAdd";
     }
 
     @GetMapping("/graphPie")
@@ -121,5 +120,23 @@ public class DataController {
         List<GraphPieBean> list = GraphHandler.getGraphPieData();
         model.addAttribute("list", new Gson().toJson(list));
         return "graphPie";
+    }
+
+    @GetMapping("/graphMap")
+    public String graphMap(Model model) {
+        List<DataBean> list = dataService.list();
+        List<GraphMapBean> mapList = new ArrayList<>();
+
+        for (int i = 0; i < list.size(); i++) {
+             DataBean bean = list.get(i);
+
+            GraphMapBean newBean = new GraphMapBean();
+            newBean.setName(bean.getArea());
+            newBean.setValue(bean.getNowConfirm());
+            mapList.add(newBean);
+        }
+
+        model.addAttribute("mapList", new Gson().toJson(mapList));
+        return "map";
     }
 }

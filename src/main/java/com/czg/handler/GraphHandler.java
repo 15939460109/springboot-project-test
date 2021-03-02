@@ -1,6 +1,6 @@
 package com.czg.handler;
 
-import com.czg.bean.AsymptomaticBean;
+import com.czg.bean.GraphBarBean;
 import com.czg.bean.GraphAddBean;
 import com.czg.bean.GraphBean;
 import com.czg.bean.GraphPieBean;
@@ -68,8 +68,8 @@ public class GraphHandler {
         return result;
     }
 
-    public static List<AsymptomaticBean> getAsymptomaticData() {
-        List<AsymptomaticBean> result = new ArrayList<>();
+    public static List<GraphBarBean> getAsymptomaticData() {
+        List<GraphBarBean> result = new ArrayList<>();
 
         String respJson = HttpClientUtil.doGet(url2);
         Gson gson = new Gson();
@@ -83,7 +83,7 @@ public class GraphHandler {
             double increase = (Double)tempMap.get("increase");
             double confirm = (Double)tempMap.get("confirm");
 
-            AsymptomaticBean bean = new AsymptomaticBean();
+            GraphBarBean bean = new GraphBarBean();
             bean.setProvince(province);
             bean.setConfirm((int)confirm);
             bean.setIncrease((int)increase);
@@ -93,15 +93,15 @@ public class GraphHandler {
         return result;
     }
 
-    public static List<AsymptomaticBean> asymptomaticAddData() {
-        List<AsymptomaticBean> result = getAsymptomaticData();
+    public static List<GraphBarBean> asymptomaticAddData() {
+        List<GraphBarBean> result = getAsymptomaticData();
         System.out.println(result);
         Collections.sort(result);
         return result;
     }
 
-    public static List<AsymptomaticBean> asymptomaticData() {
-        List<AsymptomaticBean> result = new ArrayList<>();
+    public static List<GraphBarBean> asymptomaticData() {
+        List<GraphBarBean> result = new ArrayList<>();
 
         String respJson = HttpClientUtil.doGet(url2);
         Gson gson = new Gson();
@@ -114,7 +114,7 @@ public class GraphHandler {
             String province = (String)tempMap.get("province");
             double confirm = (Double)tempMap.get("confirm");
 
-            AsymptomaticBean bean = new AsymptomaticBean();
+            GraphBarBean bean = new GraphBarBean();
             bean.setProvince(province);
             bean.setConfirm((int)confirm);
             result.add(bean);
@@ -155,6 +155,9 @@ public class GraphHandler {
 
             result.add(bean);
         }
+
+        // 排序
+        Collections.sort(result);
 
         return result;
     }

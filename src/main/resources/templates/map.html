@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="echarts/china.js"></script>
+</head>
+<body>
+<div id="main" style="width: 1000px; height: 700px;"></div>
+
+<script type="text/javascript" th:inline="javascript">
+    var myChart = echarts.init(document.getElementById('main'));
+
+    var mapData = [[${mapList}]];
+
+    var option = {
+        title: {    // 标题
+            text: '疫情地图',
+            subtext: '仅供参考',
+            x: 'center'
+        },
+        tooltip: {  // 鼠标事件 提示框
+            trigger: 'item'
+        },
+        series: [
+            {
+                name: '现存确诊',
+                type: 'map',
+                mapType: 'china',
+                roam: false,
+                label: {
+                    normal: {
+                        // formatter: '{b}',
+                        position: 'center',
+                        show: true,
+                        textStyle: {
+                            color: 'rgba(0,0,0,0.4)'
+                        }
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                data: JSON.parse(mapData)
+            }
+        ]
+    };
+
+    myChart.setOption(option);
+</script>
+</body>
+</html>

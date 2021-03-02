@@ -11,7 +11,7 @@
 <script type="text/javascript" th:inline="javascript">
     var myChart = echarts.init(document.getElementById('main'));
 
-    var list = [[${list}]];
+    var list = [[${list.properties}]];
 
     var option = {
         title: {    // 标题

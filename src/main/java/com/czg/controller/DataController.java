@@ -25,11 +25,11 @@ public class DataController {
         return "list";
     }
 
-//    @GetMapping("/list/{id}")
-//    public String list(Model model, @PathVariable String id) {
-//        List<DataBean> list = dataService.listById(Integer.parseInt(id));
-//        model.addAttribute("dataList", list);
-//        return "list";
+//    @GetMapping("/list.properties/{id}")
+//    public String list.properties(Model model, @PathVariable String id) {
+//        List<DataBean> list.properties = dataService.listById(Integer.parseInt(id));
+//        model.addAttribute("dataList", list.properties);
+//        return "list.properties";
 //    }
 
     @GetMapping("/graph")

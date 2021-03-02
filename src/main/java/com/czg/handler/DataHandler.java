@@ -50,6 +50,8 @@ public class DataHandler {
     // 每分钟执行一次  更改可参考cron表达式生成网站
     @Scheduled(cron = "0 0/1 * * * ? ")
     public void updateData() {
+
+        // TODO 增加监听    提供用户订阅功能 比如关注疫情新增人数的变化
         saveData();
     }
 

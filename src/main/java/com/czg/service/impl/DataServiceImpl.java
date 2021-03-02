@@ -15,7 +15,7 @@ import java.util.List;
 public class DataServiceImpl extends ServiceImpl<DataMapper, DataBean> implements DataService {
 
 //    @Override
-//    public List<DataBean> list() {
+//    public List<DataBean> list.properties() {
 //        List<DataBean> result = null;
 //
 //        try {
@@ -31,7 +31,7 @@ public class DataServiceImpl extends ServiceImpl<DataMapper, DataBean> implement
 //        if (id == 2) {
 //            return JsoupHandler.getData();
 //        }
-//        return list();
+//        return list.properties();
 //    }
 
 }

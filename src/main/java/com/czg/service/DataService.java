@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface DataService extends IService<DataBean> {
 
-//    List<DataBean> list();
+//    List<DataBean> list.properties();
 //
 //    List<DataBean> listById(int id);
 }

@@ -95,7 +95,6 @@ public class GraphHandler {
 
     public static List<GraphBarBean> asymptomaticAddData() {
         List<GraphBarBean> result = getAsymptomaticData();
-        System.out.println(result);
         Collections.sort(result);
         return result;
     }

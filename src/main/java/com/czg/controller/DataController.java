@@ -22,6 +22,73 @@ public class DataController {
     public String list(Model model) {
         List<DataBean> list = dataService.list();
         model.addAttribute("dataList", list);
+
+        // ==================================================
+
+        List<GraphMapBean> mapList = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            DataBean bean = list.get(i);
+
+            GraphMapBean newBean = new GraphMapBean();
+            newBean.setName(bean.getArea());
+            newBean.setValue(bean.getNowConfirm());
+            mapList.add(newBean);
+        }
+        model.addAttribute("mapList", new Gson().toJson(mapList));
+
+        // ==================================================
+
+        List<GraphBean> list2 = GraphHandler.getGraphData();
+        // 前端需要x、y轴的数据，所以这里做一下拆分
+        List<String> dateList = new ArrayList<>();
+        List<Integer> nowConfirmList = new ArrayList<>();
+        for (int i = 0; i < list2.size(); i++) {
+            GraphBean bean = list2.get(i);
+            dateList.add(bean.getDate());
+            nowConfirmList.add(bean.getNowConfirm());
+        }
+        Gson gson = new Gson();
+        // 将数据放入model
+        model.addAttribute("dateList", gson.toJson(dateList));
+        model.addAttribute("nowConfirmList", gson.toJson(nowConfirmList));
+
+        // ==================================================
+
+        List<GraphBarBean> list3 = GraphHandler.asymptomaticData();
+        // 需要排名前十的数据
+        List<String> provinceList = new ArrayList<>();
+        List<Integer> confirmList = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            GraphBarBean bean = list3.get(i);
+            if (bean.getConfirm() > 0) {
+                provinceList.add(bean.getProvince());
+                confirmList.add(bean.getConfirm());
+            }
+        }
+        model.addAttribute("provinceList", gson.toJson(provinceList));
+        model.addAttribute("confirmList", gson.toJson(confirmList));
+
+        // ==================================================
+
+        List<GraphBarBean> list4 = GraphHandler.asymptomaticAddData();
+        // 需要排名前十的数据
+        List<String> addProvinceList = new ArrayList<>();
+        List<Integer> increaseList = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            GraphBarBean bean = list4.get(i);
+            if (bean.getIncrease() > 0) {
+                addProvinceList.add(bean.getProvince());
+                increaseList.add(bean.getIncrease());
+            }
+        }
+        model.addAttribute("addProvinceList", gson.toJson(addProvinceList));
+        model.addAttribute("increaseList", gson.toJson(increaseList));
+
+        // ==================================================
+
+        List<GraphPieBean> list5 = GraphHandler.getGraphPieData();
+        model.addAttribute("list", new Gson().toJson(list5));
+
         return "list";
     }
 

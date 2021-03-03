@@ -15,6 +15,7 @@ public class MailController {
 
     @GetMapping("/async")
     public String async() {
+
         try {
             mailHandler.sendByTemplate();
         } catch (MessagingException e) {

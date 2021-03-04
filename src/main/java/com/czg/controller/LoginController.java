@@ -15,15 +15,15 @@ public class LoginController {
         return "login";
     }
 
-    @PostMapping("/login")
-    public String login(@RequestParam String username, @RequestParam String password,
-                        HttpSession session) {
-        if ("a".equals(username) && "123".equals(password)) {
-            // 设置session
-            session.setAttribute("loginUser", username);
-            // 重定向
-            return "redirect:/";
-        }
-        return "";
-    }
+//    @PostMapping("/login")
+//    public String login(@RequestParam String username, @RequestParam String password,
+//                        HttpSession session) {
+//        if ("a".equals(username) && "123".equals(password)) {
+//            // 设置session
+//            session.setAttribute("loginUser", username);
+//            // 重定向
+//            return "redirect:/";
+//        }
+//        return "";
+//    }
 }
